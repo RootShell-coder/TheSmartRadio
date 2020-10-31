@@ -43,16 +43,16 @@ void radioNode::loop(){
     audio.loop();
 }
 
+//void radioNode::sendStreamInfo(const char *nfo){
+//    setProperty("info").send(String(nfo));
+//}
+
 void audio_showstreamtitle(const char *info){
   Homie.getLogger() << "🔶 Title: " << info << endl;
-  Serial.print("Title  ");
-  Serial.println(info);
-  //setProperty("info").send(String(info));
-  //radioNode.streamTitle(info);
-  //HomieInternals::SendingPromise::
-  //HomieInternals->SendingPromise->setProperty("info").send(String(info));
-  //streamTitle(info);
+  Serial.print("Title  "); Serial.println(info);
+  //radioNode::sendStreamInfo(info);
 }
+
 /*
 // optional
 void audio_info(const char *info){
