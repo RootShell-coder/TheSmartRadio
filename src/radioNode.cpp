@@ -5,6 +5,7 @@
 #define I2S_LRC 26
 
 Audio audio;
+const char *info;
 
 radioNode::radioNode(const char* id, const char* name, const char* type) : HomieNode(id, name, type){
   defaultVolume = new HomieSetting<long>("volume", "Setting the volume level (range:0-21 default:0)");
@@ -41,16 +42,19 @@ void radioNode::setup(){
 
 void radioNode::loop(){
     audio.loop();
+    //sendStreamInfo();
 }
 
-//void radioNode::sendStreamInfo(const char *nfo){
-//    setProperty("info").send(String(nfo));
-//}
+void radioNode::sendStreamInfo(){
+   setProperty("info").send(String(info).c_str());
+}
 
 void audio_showstreamtitle(const char *info){
   Homie.getLogger() << "🔶 Title: " << info << endl;
   Serial.print("Title  "); Serial.println(info);
-  //radioNode::sendStreamInfo(info);
+  //nfo = const_cast<char*>(info);
+  //radioNode::sendStreamInfo();
+  //setProperty("info").send(String(info));
 }
 
 /*
