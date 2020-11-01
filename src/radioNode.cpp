@@ -1,11 +1,13 @@
 #include "radioNode.h"
 
-#define I2S_DOUT 25
-#define I2S_BCLK 27
-#define I2S_LRC 26
+#define SPI_MOSI      23
+#define SPI_MISO      19
+#define SPI_SCK       18
+#define VS1053_CS     2
+#define VS1053_DCS    4
+#define VS1053_DREQ   36
 
-Audio audio;
-const char *info;
+VS1053 mp3(VS1053_CS, VS1053_DCS, VS1053_DREQ);
 
 radioNode::radioNode(const char* id, const char* name, const char* type) : HomieNode(id, name, type){
   defaultVolume = new HomieSetting<long>("volume", "Setting the volume level (range:0-21 default:0)");
@@ -16,13 +18,13 @@ bool radioNode::handleInput(const HomieRange& range, const String& property, con
     if((uint8_t)value.toInt() >= 0 && (uint8_t)value.toInt() <= 21){
       volume = (uint8_t)value.toInt();
       setProperty("volume").send(String(volume));
-      audio.setVolume(volume);
+      mp3.setVolume(volume);
     }
   }
 
   if(property == "station"){
       setProperty("station").send(String(value.c_str()));
-      audio.connecttohost(value.c_str());
+      mp3.connecttohost(value.c_str());
   }
   return true;
 }
@@ -34,59 +36,50 @@ void radioNode::radioSetup(){
 }
 
 void radioNode::setup(){
-    audio.setPinout(I2S_BCLK, I2S_LRC, I2S_DOUT);
+    SPI.begin();
+    mp3.begin();
     advertise("volume").setRetained(true).setFormat("0-21").settable();
     advertise("station").setRetained(true).setFormat("String").settable();
-    advertise("info").setRetained(false).settable();
 }
 
 void radioNode::loop(){
-    audio.loop();
-    //sendStreamInfo();
+    mp3.loop();
 }
 
-void radioNode::sendStreamInfo(){
-   setProperty("info").send(String(info).c_str());
-}
-
-void audio_showstreamtitle(const char *info){
+void vs1053_showstreamtitle(const char *info){
   Homie.getLogger() << "🔶 Title: " << info << endl;
-  Serial.print("Title  "); Serial.println(info);
-  //nfo = const_cast<char*>(info);
-  //radioNode::sendStreamInfo();
-  //setProperty("info").send(String(info));
 }
 
 /*
 // optional
-void audio_info(const char *info){
+void vs1053_info(const char *info){
     Serial.print("info        "); Serial.println(info);
 }
-void audio_id3data(const char *info){  //id3 metadata
+void vs1053_id3data(const char *info){  //id3 metadata
     Serial.print("id3data     ");Serial.println(info);
 }
-void audio_eof_mp3(const char *info){  //end of file
+void vs1053_eof_mp3(const char *info){  //end of file
     Serial.print("eof_mp3     ");Serial.println(info);
 }
-void audio_showstation(const char *info){
+void vs1053_showstation(const char *info){
     Serial.print("station     ");Serial.println(info);
 }
-void audio_showstreaminfo(const char *info){
+void vs1053_showstreaminfo(const char *info){
     Serial.print("streaminfo  ");Serial.println(info);
 }
-void audio_bitrate(const char *info){
+void vs1053_bitrate(const char *info){
     Serial.print("bitrate     ");Serial.println(info);
 }
-void audio_commercial(const char *info){  //duration in sec
+void vs1053_commercial(const char *info){  //duration in sec
     Serial.print("commercial  ");Serial.println(info);
 }
-void audio_icyurl(const char *info){  //homepage
+void vs1053_icyurl(const char *info){  //homepage
     Serial.print("icyurl      ");Serial.println(info);
 }
-void audio_lasthost(const char *info){  //stream URL played
+void vs1053_lasthost(const char *info){  //stream URL played
     Serial.print("lasthost    ");Serial.println(info);
 }
-void audio_eof_speech(const char *info){
+void vs1053_eof_speech(const char *info){
     Serial.print("eof_speech  ");Serial.println(info);
 }
 */

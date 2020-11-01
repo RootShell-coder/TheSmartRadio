@@ -6,7 +6,7 @@
 #define FM_VER    "0.0.1"
 
 WiFiUDP ntpUDP;
-radioNode RadioNode("radio", "online", "WiFi");
+radioNode RadioNode("radio", "network", "WiFi");
 
 void setup() {
   Serial.begin(115200);

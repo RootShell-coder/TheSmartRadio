@@ -1,14 +1,13 @@
 #ifndef RADIONODE_H
 #define RADIONODE_H
 #include <Homie.h>
-#include <Audio.h>
+#include <SPI.h>
+#include <vs1053_ext.h>
 
 class radioNode : public HomieNode {
     public:
         explicit radioNode(const char *id, const char *name, const char *type);
         void radioSetup();
-        void sendStreamInfo();
-        //extern void audio_showstreamtitle(const char *);
 
     protected:
         virtual bool handleInput(const HomieRange& range, const String& property, const String& value) override;
