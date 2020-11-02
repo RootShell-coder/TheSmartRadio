@@ -38,6 +38,12 @@ void radioNode::radioSetup(){
 void radioNode::setup(){
     SPI.begin();
     mp3.begin();
+        uint8_t u8_tone[4];
+        u8_tone[0] = 0;  // Treble Gain set (0...15)
+        u8_tone[1] = 14; // Treble Freq set (0...14)
+        u8_tone[2] = 15; // Bass Gain set   (0...15)
+        u8_tone[3] = 13; // Bass Freq set   (0...13)
+    mp3.setTone(u8_tone);
     advertise("volume").setRetained(true).setFormat("0-21").settable();
     advertise("station").setRetained(true).setFormat("String").settable();
 }
@@ -50,6 +56,9 @@ void vs1053_showstreamtitle(const char *info){
   Homie.getLogger() << "🔶 Title: " << info << endl;
 }
 
+void radioNode::say(const char *proffer, const char *lang){
+    mp3.connecttospeech(proffer, lang);
+}
 /*
 // optional
 void vs1053_info(const char *info){

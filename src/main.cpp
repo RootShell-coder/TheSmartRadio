@@ -1,3 +1,9 @@
+/*
+http://tophits.radiomonster.fm/320.mp
+https://icecast.omroepvenray.nl/lov.mp3
+http://stream.radiofontan.ru:8000/radiofontan
+*/
+
 #include <Homie.h>
 #include "radioNode.h"
 
@@ -19,6 +25,7 @@ void setup() {
   Homie.disableResetTrigger();
 
   Homie.setup();
+  RadioNode.say("お待たせしました。", "ja");
 }
 
 void loop() {
