@@ -2,6 +2,10 @@
 http://tophits.radiomonster.fm/320.mp
 https://icecast.omroepvenray.nl/lov.mp3
 http://stream.radiofontan.ru:8000/radiofontan
+http://pool.anison.fm:9000/AniSonFM(320)?nocache=0.98
+http://musicbird.leanstream.co/JCB110-MP3  #FMみっきぃ
+http://musicbird.leanstream.co/JCB068-MP3  #ウメダfm Be Happy!
+https://icecast-zvezda.mediacdn.ru/radio/zvezda/zvezda_128
 */
 
 #include <Homie.h>
