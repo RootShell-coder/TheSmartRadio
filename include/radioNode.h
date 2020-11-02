@@ -16,6 +16,6 @@ class radioNode : public HomieNode {
 
     private:
         HomieSetting<long> *defaultVolume;
-        uint8_t  volume;
+        uint8_t volume;
 };
 #endif
