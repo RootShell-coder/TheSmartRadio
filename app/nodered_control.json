@@ -1,0 +1,348 @@
+[
+    {
+        "id": "c9354cf1.3b4e5",
+        "type": "tab",
+        "label": "Radio",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "2c03e9fc.bb386e",
+        "type": "inject",
+        "z": "c9354cf1.3b4e5",
+        "name": "radiomonster.fm",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "http://tophits.radiomonster.fm/320.mp",
+        "payloadType": "str",
+        "x": 195,
+        "y": 140,
+        "wires": [
+            [
+                "c069dbb2.08e93"
+            ]
+        ]
+    },
+    {
+        "id": "eb2e9b59.721ee",
+        "type": "inject",
+        "z": "c9354cf1.3b4e5",
+        "name": "radiofontan",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "http://stream.radiofontan.ru:8000/radiofontan",
+        "payloadType": "str",
+        "x": 185,
+        "y": 175,
+        "wires": [
+            [
+                "c069dbb2.08e93"
+            ]
+        ]
+    },
+    {
+        "id": "bd7fa6da.c0e05",
+        "type": "inject",
+        "z": "c9354cf1.3b4e5",
+        "name": "FMみっきぃ",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "http://musicbird.leanstream.co/JCB110-MP3",
+        "payloadType": "str",
+        "x": 185,
+        "y": 210,
+        "wires": [
+            [
+                "c069dbb2.08e93"
+            ]
+        ]
+    },
+    {
+        "id": "9b76ac1b.848c88",
+        "type": "inject",
+        "z": "c9354cf1.3b4e5",
+        "name": "ウメダfm",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "http://musicbird.leanstream.co/JCB068-MP3",
+        "payloadType": "str",
+        "x": 175,
+        "y": 245,
+        "wires": [
+            [
+                "c069dbb2.08e93"
+            ]
+        ]
+    },
+    {
+        "id": "6a43a465.ea88d4",
+        "type": "inject",
+        "z": "c9354cf1.3b4e5",
+        "name": "Zvezda",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "http://icecast-zvezda.mediacdn.ru/radio/zvezda/zvezda_128",
+        "payloadType": "str",
+        "x": 165,
+        "y": 280,
+        "wires": [
+            [
+                "c069dbb2.08e93"
+            ]
+        ]
+    },
+    {
+        "id": "5ba791ae.df8688",
+        "type": "comment",
+        "z": "c9354cf1.3b4e5",
+        "name": "station",
+        "info": "http://tophits.radiomonster.fm/320.mp\nhttps://icecast.omroepvenray.nl/lov.mp3\nhttp://stream.radiofontan.ru:8000/radiofontan\nhttp://pool.anison.fm:9000/AniSonFM(320)?nocache=0.98\nhttp://musicbird.leanstream.co/JCB110-MP3  #FMみっきぃ\nhttp://musicbird.leanstream.co/JCB068-MP3  #ウメダfm Be Happy!\nhttps://icecast-zvezda.mediacdn.ru/radio/zvezda/zvezda_128\n",
+        "x": 165,
+        "y": 105,
+        "wires": []
+    },
+    {
+        "id": "c069dbb2.08e93",
+        "type": "mqtt out",
+        "z": "c9354cf1.3b4e5",
+        "name": "Station .../tsr/radio/station/set",
+        "topic": ".../tsr/radio/station/set",
+        "qos": "2",
+        "retain": "true",
+        "broker": "28f10716.30a06",
+        "x": 485,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "11ae203c.e1563",
+        "type": "inject",
+        "z": "c9354cf1.3b4e5",
+        "name": "",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            },
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "up",
+        "payload": "1",
+        "payloadType": "num",
+        "x": 520,
+        "y": 140,
+        "wires": [
+            [
+                "8824a19d.5d1d9"
+            ]
+        ]
+    },
+    {
+        "id": "7879b7cc.dc6b48",
+        "type": "mqtt out",
+        "z": "c9354cf1.3b4e5",
+        "name": "Volume .../tsr/radio/volume/set",
+        "topic": ".../tsr/radio/volume/set",
+        "qos": "2",
+        "retain": "true",
+        "broker": "28f10716.30a06",
+        "x": 895,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "8824a19d.5d1d9",
+        "type": "function",
+        "z": "c9354cf1.3b4e5",
+        "name": "",
+        "func": "try{\n    var volume = context.get('volume')||0;\n    var setVolume ={};\n\n    if(msg.topic === \".../tsr/radio/volume\"){ //edit this path\n        context.set('volume', parseInt(msg.payload));\n    }\n    \n    if(msg.topic === \"up\"){\n        var uVolume = context.get('volume') + msg.payload;\n        setVolume.payload = uVolume > 21 ? 21 : uVolume;\n    return setVolume;\n    }\n \n    if(msg.topic === \"down\"){\n        var dVolume = context.get('volume') - msg.payload;\n        setVolume.payload = dVolume < 0 ? 0 : dVolume;\n    return setVolume;\n    }\n}\ncatch (e){}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 685,
+        "y": 140,
+        "wires": [
+            [
+                "7879b7cc.dc6b48"
+            ]
+        ]
+    },
+    {
+        "id": "38d3534e.3107b4",
+        "type": "inject",
+        "z": "c9354cf1.3b4e5",
+        "name": "",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            },
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "down",
+        "payload": "1",
+        "payloadType": "num",
+        "x": 520,
+        "y": 175,
+        "wires": [
+            [
+                "8824a19d.5d1d9"
+            ]
+        ]
+    },
+    {
+        "id": "81658a1c.3e2dc",
+        "type": "mqtt in",
+        "z": "c9354cf1.3b4e5",
+        "name": "volume .../tsr/radio/volume",
+        "topic": ".../tsr/radio/volume",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "28f10716.30a06",
+        "x": 460,
+        "y": 210,
+        "wires": [
+            [
+                "8824a19d.5d1d9",
+                "1333e17a.2d3dff"
+            ]
+        ]
+    },
+    {
+        "id": "a0be6aae.42e918",
+        "type": "comment",
+        "z": "c9354cf1.3b4e5",
+        "name": "volume",
+        "info": "",
+        "x": 520,
+        "y": 105,
+        "wires": []
+    },
+    {
+        "id": "1333e17a.2d3dff",
+        "type": "debug",
+        "z": "c9354cf1.3b4e5",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 695,
+        "y": 175,
+        "wires": []
+    },
+    {
+        "id": "28f10716.30a06",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "user",
+        "broker": "mqtt",
+        "port": "1883",
+        "tls": "e8b58f64.85ac18",
+        "clientid": "ServerNodeRedID",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "e8b58f64.85ac18",
+        "type": "tls-config",
+        "z": "",
+        "name": "",
+        "cert": "",
+        "key": "",
+        "ca": "",
+        "certname": "",
+        "keyname": "",
+        "caname": "",
+        "servername": "",
+        "verifyservercert": false
+    }
+]
