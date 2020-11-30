@@ -26,7 +26,7 @@ void setup() {
   RadioNode.radioSetup();
   Homie.disableLedFeedback();
   Homie.setup();
-}
+  }
 
 void loop() {
   Homie.loop();
