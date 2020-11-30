@@ -26,10 +26,10 @@ void setup() {
   RadioNode.radioSetup();
 
   Homie.disableLedFeedback();
-  Homie.disableResetTrigger();
+  //Homie.disableResetTrigger();
 
   Homie.setup();
-  RadioNode.say("お待たせしました。", "ja");
+  //RadioNode.say("お待たせしました。", "ja");
 }
 
 void loop() {
