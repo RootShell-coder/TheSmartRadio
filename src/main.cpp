@@ -24,12 +24,8 @@ void setup() {
   Homie_setFirmware(FM_NAME, FM_VER);
 
   RadioNode.radioSetup();
-
   Homie.disableLedFeedback();
-  Homie.disableResetTrigger();
-
   Homie.setup();
-  RadioNode.say("お待たせしました。", "ja");
 }
 
 void loop() {
