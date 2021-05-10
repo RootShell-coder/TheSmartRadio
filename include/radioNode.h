@@ -9,7 +9,7 @@ class radioNode : public HomieNode {
     public:
         explicit radioNode(const char *id, const char *name, const char *type);
         void radioSetup();
-        void say(const char *phrase, const char *lang);
+        //void say(const char *phrase, const char *lang);
 
     protected:
         virtual bool handleInput(const HomieRange& range, const String& property, const String& value) override;

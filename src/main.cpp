@@ -13,7 +13,7 @@ https://icecast-zvezda.mediacdn.ru/radio/zvezda/zvezda_128
 
 #define BRAND     "TSR"
 #define FM_NAME   "The Smart Radio"
-#define FM_VER    "0.0.1"
+#define FM_VER    "0.0.2"
 
 radioNode RadioNode("radio", "network", "WiFi");
 
@@ -24,7 +24,7 @@ void setup() {
   Homie_setFirmware(FM_NAME, FM_VER);
 
   RadioNode.radioSetup();
-  Homie.disableLedFeedback();
+  //Homie.disableLedFeedback();
   Homie.setup();
   }
 
